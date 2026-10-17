@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start TECHZONE local server",
+            "type": "process",
+            "command": "node",
+            "args": [
+                "server.js"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "^(.*)$",
+                    "message": 1
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^Starting TECHZONE server on http://localhost:5050$",
+                    "endsPattern": "^TECHZONE server ready at http://localhost:5050$"
+                }
+            }
+        }
+    ]
+}

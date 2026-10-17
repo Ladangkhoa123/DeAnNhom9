@@ -2,91 +2,91 @@ const products = [
   {
     id: "lap-rog-01", category: "laptop", code: "TZ-LP-0241", badge: "HOT", name: "ASUS ROG Zephyrus G14 GA403", price: 45990000, oldPrice: 52990000,
     rating: 4.9, reviews: 128, specs: ["Ryzen 9", "RTX 4070", "32GB / 1TB"],
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=760&q=82", stock: 8,
+    image: "image/asus-rog-zephyrus-g14-ga403.jpg", stock: 8,
     description: "Sức mạnh gaming và sáng tạo trong thiết kế mỏng nhẹ, màn hình OLED 3K sống động."
   },
   {
     id: "lap-msi-02", category: "laptop", code: "TZ-LP-0187", badge: "SALE", name: "MSI Katana 15 B13VFK", price: 28990000, oldPrice: 32990000,
     rating: 4.8, reviews: 96, specs: ["Core i7-13620H", "RTX 4060", "16GB / 512GB"],
-    image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=760&q=82", stock: 12,
+    image: "image/msi-katana-15-b13vfk.jpg", stock: 12,
     description: "Laptop gaming hiệu năng cao với RTX 4060, sẵn sàng chinh phục mọi tựa game AAA."
   },
   {
     id: "lap-legion-03", category: "laptop", code: "TZ-LP-0203", badge: "BEST SELLER", name: "Lenovo Legion Slim 5 16IRH8", price: 32990000, oldPrice: 36990000,
     rating: 4.9, reviews: 74, specs: ["Core i7-13700H", "RTX 4060", "16GB / 1TB"],
-    image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=760&q=82", stock: 6,
+    image: "image/lenovo-legion-slim-5-16irh8.jpg", stock: 6,
     description: "Cân bằng hoàn hảo giữa hiệu năng, tản nhiệt và tính linh hoạt cho game thủ hiện đại."
   },
   {
     id: "lap-acer-04", category: "laptop", code: "TZ-LP-0316", badge: "NEW", name: "Acer Predator Helios Neo 16", price: 35990000, oldPrice: 39990000,
     rating: 4.7, reviews: 53, specs: ["Core i7-14650HX", "RTX 4060", "16GB / 1TB"],
-    image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=760&q=82", stock: 9,
+    image: "image/acer-predator-helios-neo-16.jpg", stock: 9,
     description: "Màn hình 240Hz cùng nền tảng Intel thế hệ mới cho trải nghiệm thi đấu mượt mà."
   },
   {
     id: "pc-phantom-01", category: "pc", code: "TZ-PC-0058", badge: "BEST SELLER", name: "TECHZONE Phantom X — RTX 4070 SUPER", price: 42990000, oldPrice: 47990000,
     rating: 5.0, reviews: 82, specs: ["Core i7-14700F", "RTX 4070S", "32GB / 1TB"],
-    image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=760&q=82", stock: 5,
+    image: "image/hinhanh.jpg", stock: 5,
     description: "Cỗ máy gaming được đội ngũ TECHZONE tuyển chọn linh kiện và lắp ráp tối ưu."
   },
   {
     id: "pc-nebula-02", category: "pc", code: "TZ-PC-0072", badge: "HOT", name: "TECHZONE Nebula — Ryzen 7 / RTX 4070", price: 38990000, oldPrice: 42990000,
     rating: 4.9, reviews: 61, specs: ["Ryzen 7 7800X3D", "RTX 4070", "32GB / 1TB"],
-    image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=760&q=82", stock: 7,
+    image: "image/techzone-nebula-ryzen-7-rtx-4070.jpg", stock: 7,
     description: "Tối ưu cho gaming tốc độ khung hình cao với Ryzen X3D và card đồ họa RTX."
   },
   {
     id: "pc-starter-03", category: "pc", code: "TZ-PC-0104", badge: "SALE", name: "TECHZONE Pulse — Gaming Starter", price: 21990000, oldPrice: 24990000,
     rating: 4.8, reviews: 104, specs: ["Core i5-13400F", "RTX 4060", "16GB / 1TB"],
-    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=760&q=82", stock: 11,
+    image: "image/techzone-pulse-gaming-starter.jpg", stock: 11,
     description: "Cấu hình khởi đầu lý tưởng cho game thủ, cân tốt game eSports và nhiều tựa game AAA."
   },
   {
     id: "gpu-4070-01", category: "component", code: "TZ-VGA-0210", badge: "SALE", name: "MSI GeForce RTX 4070 SUPER 12G", price: 18990000, oldPrice: 20990000,
     rating: 4.9, reviews: 58, specs: ["12GB GDDR6X", "DLSS 3", "2.5 Slot"],
-    image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=760&q=82", stock: 9,
+    image: "image/msi-geforce-rtx-4070-super-12g.jpg", stock: 9,
     description: "Đồ họa thế hệ mới với ray tracing và DLSS 3 cho trải nghiệm gaming vượt trội."
   },
   {
     id: "cpu-ryzen-02", category: "component", code: "TZ-CPU-0142", badge: "HOT", name: "AMD Ryzen 7 7800X3D", price: 9990000, oldPrice: 10990000,
     rating: 5.0, reviews: 112, specs: ["8 nhân / 16 luồng", "96MB Cache", "AM5"],
-    image: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=760&q=82", stock: 14,
+    image: "image/amd-ryzen-7-7800x3d.jpg", stock: 14,
     description: "Bộ xử lý gaming hàng đầu với công nghệ 3D V-Cache, tối ưu cho tốc độ khung hình."
   },
   {
     id: "ram-ddr5-03", category: "component", code: "TZ-RAM-0081", badge: "NEW", name: "G.Skill Trident Z5 Neo RGB 32GB", price: 3290000, oldPrice: 3890000,
     rating: 4.8, reviews: 47, specs: ["DDR5 6000MHz", "32GB (2×16GB)", "RGB"],
-    image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=760&q=82", stock: 18,
+    image: "image/gskill-trident-z5-neo-rgb-32gb.jpg", stock: 18,
     description: "Bộ nhớ DDR5 tốc độ cao với ánh sáng RGB tinh tế, tương thích nền tảng AMD mới."
   },
   {
     id: "ssd-990-04", category: "component", code: "TZ-SSD-0096", badge: "SALE", name: "Samsung 990 PRO 1TB NVMe", price: 2790000, oldPrice: 3290000,
     rating: 4.9, reviews: 91, specs: ["PCIe 4.0", "Đọc 7.450 MB/s", "M.2 2280"],
-    image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=760&q=82", stock: 16,
+    image: "image/samsung-990-pro-1tb-nvme.jpg", stock: 16,
     description: "SSD hiệu năng cao giúp tải game, khởi động hệ thống và xử lý dữ liệu nhanh chóng."
   },
   {
     id: "monitor-27-01", category: "gear", code: "TZ-MN-0135", badge: "NEW", name: "LG UltraGear 27GP850-B 27” QHD", price: 8990000, oldPrice: 9990000,
     rating: 4.9, reviews: 67, specs: ["QHD 165Hz", "Nano IPS", "1ms GtG"],
-    image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=760&q=82", stock: 8,
+    image: "image/lg-ultragear-27gp850-b.jpg", stock: 8,
     description: "Màn hình Nano IPS 2K tần số quét cao, cho hình ảnh sắc nét và chuyển động mượt mà."
   },
   {
     id: "headset-02", category: "gear", code: "TZ-GR-0228", badge: "HOT", name: "HyperX Cloud III Wireless", price: 3690000, oldPrice: 4290000,
     rating: 4.8, reviews: 43, specs: ["Âm thanh 3D", "Pin 120 giờ", "2.4GHz Wireless"],
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=760&q=82", stock: 10,
+    image: "image/hyperx-cloud-iii-wireless.jpg", stock: 10,
     description: "Tai nghe gaming không dây thoải mái với âm thanh không gian và thời lượng pin bền bỉ."
   },
   {
     id: "keyboard-03", category: "gear", code: "TZ-GR-0194", badge: "SALE", name: "Logitech G PRO X TKL LIGHTSPEED", price: 3490000, oldPrice: 3990000,
     rating: 4.9, reviews: 39, specs: ["Wireless LIGHTSPEED", "Switch GX", "RGB LIGHTSYNC"],
-    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=760&q=82", stock: 13,
+    image: "image/logitech-g-pro-x-tkl-lightspeed.jpg", stock: 13,
     description: "Bàn phím không dây thiết kế gọn cho thi đấu, độ trễ thấp và ánh sáng RGB tùy chỉnh."
   },
   {
     id: "mouse-04", category: "gear", code: "TZ-GR-0312", badge: "BEST SELLER", name: "Logitech G PRO X SUPERLIGHT 2", price: 2990000, oldPrice: 3490000,
     rating: 4.9, reviews: 55, specs: ["60g siêu nhẹ", "HERO 2 32K", "LIGHTSPEED"],
-    image: "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=760&q=82", stock: 17,
+    image: "image/logitech-g-pro-x-superlight-2.jpg", stock: 17,
     description: "Chuột gaming siêu nhẹ với cảm biến HERO 2 chính xác cho những pha xử lý tốc độ."
   }
 ];
@@ -375,19 +375,19 @@ const slides = [
   {
     title: "Hiệu năng<br>không giới hạn<span>.</span>",
     description: "Nâng cấp góc gaming của bạn với những cỗ máy được sinh ra để bứt phá.",
-    image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=85",
+    image: "image/hinhanh.jpg",
     alt: "Bộ PC gaming RGB cao cấp", label: "Phantom X · RTX 4070 Ti", cta: "Khám phá bộ sưu tập", href: "#pc-gaming", discount: "−15%"
   },
   {
     title: "Chơi theo<br>cách của bạn<span>.</span>",
     description: "Laptop gaming thế hệ mới — gọn nhẹ để đi xa, mạnh mẽ để bứt tốc.",
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1200&q=85",
+    image: "image/asus-rog-zephyrus-g14-ga403.jpg",
     alt: "Laptop gaming hiệu năng cao", label: "ROG Zephyrus · RTX 4070", cta: "Khám phá laptop", href: "#laptop", discount: "−13%"
   },
   {
     title: "Build chất.<br>Chiến hết mình<span>.</span>",
     description: "Linh kiện chính hãng, cấu hình tối ưu — sẵn sàng cho mọi cuộc chơi.",
-    image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=85",
+    image: "image/msi-geforce-rtx-4070-super-12g.jpg",
     alt: "Linh kiện và bộ PC gaming hiện đại", label: "RTX 4070 SUPER · 12GB", cta: "Xem linh kiện", href: "#components", discount: "−10%"
   }
 ];
