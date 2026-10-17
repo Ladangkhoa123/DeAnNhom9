@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="TECHZONE - Máy tính, laptop gaming và linh kiện chính hãng với ưu đãi mỗi ngày.">
+  <title>TECHZONE — Công nghệ trong tầm tay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="announcement">
+    <div class="container announcement-inner">
+      <span class="announcement-mark">✦</span>
+      <p><strong>TECHZONE WEEK</strong> — Ưu đãi đến 15% cho dàn máy trong mơ</p>
+      <a href="#flash-sale">Khám phá ngay <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-main">
+      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Mở danh mục" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="brand" href="#" aria-label="TECHZONE - Trang chủ">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">TECH<span>ZONE</span><small>BUILD YOUR NEXT</small></span>
+      </a>
+
+      <form class="search-box" id="search-form" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="search-input" type="search" placeholder="Bạn đang tìm sản phẩm nào?" autocomplete="off" aria-label="Tìm kiếm sản phẩm">
+        <kbd>⌘ K</kbd>
+        <button type="submit" aria-label="Tìm kiếm">Tìm kiếm</button>
+      </form>
+
+      <div class="header-actions">
+        <button class="header-action account-action" type="button" aria-label="Tài khoản">
+          <span class="action-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></span>
+          <span class="action-label">Tài khoản</span>
+        </button>
+        <button class="header-action wishlist-action" id="wishlist-shortcut" type="button" aria-label="Danh sách yêu thích">
+          <span class="action-icon"><svg viewBox="0 0 24 24"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10a4.6 4.6 0 0 1 8.8-1.8 4.6 4.6 0 0 1 8.8 1.8Z"/></svg><i class="count-badge" id="wishlist-count">0</i></span>
+          <span class="action-label">Yêu thích</span>
+        </button>
+        <button class="header-action cart-action" id="cart-open" type="button" aria-label="Mở giỏ hàng">
+          <span class="action-icon"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.5L22 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><i class="count-badge" id="cart-count">0</i></span>
+          <span class="action-label">Giỏ hàng</span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-wrap" id="nav-wrap">
+      <nav class="container main-nav" aria-label="Danh mục chính">
+        <div class="category-nav">
+          <button class="category-trigger" id="category-trigger" aria-expanded="false" aria-controls="category-menu">
+            <svg viewBox="0 0 24 24"><path d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v6H4zM14 15h6v6h-6z"/></svg>
+            Danh mục sản phẩm <svg class="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="mega-menu" id="category-menu">
+            <div>
+              <p class="mega-title">MÁY TÍNH &amp; THIẾT BỊ</p>
+              <a href="#laptop">Laptop Gaming <span>→</span></a><a href="#pc-gaming">PC Gaming <span>→</span></a><a href="#laptop">Laptop văn phòng <span>→</span></a><a href="#gear">Màn hình <span>→</span></a>
+            </div>
+            <div>
+              <p class="mega-title">LINH KIỆN PC</p>
+              <a href="#components">Card đồ họa <span>→</span></a><a href="#components">CPU &amp; Mainboard <span>→</span></a><a href="#components">RAM &amp; SSD <span>→</span></a><a href="#components">Nguồn &amp; Tản nhiệt <span>→</span></a>
+            </div>
+            <div class="mega-feature">
+              <span class="eyebrow">PC BUILDER</span><strong>Build cấu hình<br>của riêng bạn.</strong><a href="#pc-gaming">Bắt đầu khám phá <span>↗</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="#laptop">Laptop</a><a href="#pc-gaming">PC Gaming</a><a href="#components">Linh kiện PC</a><a href="#gear">Màn hình &amp; Gear</a><a href="#news">Tin công nghệ</a>
+        <span class="nav-promo"><span class="live-dot"></span> Ưu đãi mỗi ngày</span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <span class="eyebrow hero-eyebrow"><span class="live-dot"></span> TECHZONE — TECH WEEK 2026</span>
+          <h1 id="hero-title">Hiệu năng<br>không giới hạn<span>.</span></h1>
+          <p id="hero-description">Nâng cấp góc gaming của bạn với những cỗ máy được sinh ra để bứt phá.</p>
+          <div class="hero-cta">
+            <a class="button button-primary" id="hero-cta" href="#pc-gaming">Khám phá bộ sưu tập <span>↗</span></a>
+            <a class="text-link" href="#featured">Tìm hiểu thêm <span>→</span></a>
+          </div>
+          <div class="hero-proof">
+            <div class="avatar-stack"><i>H</i><i>M</i><i>A</i><b>+</b></div>
+            <span><strong>2.4k+</strong> game thủ đã nâng cấp</span>
+            <span class="proof-divider"></span>
+            <span class="rating-proof"><b>★★★★★</b> 4.9/5</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-wrap">
+            <img id="hero-image" src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=85" alt="Bộ PC gaming RGB cao cấp" fetchpriority="high">
+          </div>
+          <div class="hero-image-shade"></div>
+          <div class="hero-product-tag"><span class="tag-icon">✦</span><span><small>GAMING RIG OF THE WEEK</small><strong>Phantom X · RTX 4070 Ti</strong></span><b>−15%</b></div>
+          <div class="hero-slide-count"><span id="slide-current">01</span><i></i> <span>03</span></div>
+          <div class="hero-controls">
+            <button id="hero-prev" aria-label="Slide trước">←</button><button id="hero-next" aria-label="Slide tiếp theo">→</button>
+          </div>
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        </div>
+      </div>
+      <div class="container hero-bottom">
+        <div class="hero-feature"><span class="feature-icon">◈</span><span><strong>Chính hãng 100%</strong><small>An tâm mua sắm</small></span></div>
+        <div class="hero-feature"><span class="feature-icon">⌁</span><span><strong>Giao nhanh 2H</strong><small>Nội thành TP.HCM</small></span></div>
+        <div class="hero-feature"><span class="feature-icon">↻</span><span><strong>Đổi mới 30 ngày</strong><small>Bảo hành tận tâm</small></span></div>
+        <div class="hero-feature"><span class="feature-icon">♧</span><span><strong>Trả góp 0%</strong><small>Thủ tục đơn giản</small></span></div>
+      </div>
+    </section>
+
+    <section class="category-section section-pad">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">SHOP BY CATEGORY</span><h2>Chọn đúng <span>chất riêng.</span></h2></div>
+          <a class="text-link" href="#featured">Tất cả danh mục <span>↗</span></a>
+        </div>
+        <div class="category-grid">
+          <a class="category-card category-laptop" href="#laptop"><div class="category-symbol">▱</div><span class="category-number">01 / LAPTOP</span><strong>Laptop</strong><small>Gaming · Creator · Office</small><span class="category-arrow">↗</span></a>
+          <a class="category-card category-pc" href="#pc-gaming"><div class="category-symbol">▣</div><span class="category-number">02 / DESKTOP</span><strong>PC Gaming</strong><small>Build sẵn · Theo yêu cầu</small><span class="category-arrow">↗</span></a>
+          <a class="category-card category-gpu" href="#components"><div class="category-symbol">▧</div><span class="category-number">03 / COMPONENTS</span><strong>Linh kiện</strong><small>CPU · VGA · RAM · SSD</small><span class="category-arrow">↗</span></a>
+          <a class="category-card category-gear" href="#gear"><div class="category-symbol">⌑</div><span class="category-number">04 / GEAR</span><strong>Gaming Gear</strong><small>Màn hình · Phụ kiện</small><span class="category-arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="flash-section section-pad" id="flash-sale">
+      <div class="container">
+        <div class="flash-header">
+          <div class="section-heading">
+            <div><span class="eyebrow"><span class="live-dot"></span> DEAL CHỚP NHOÁNG</span><h2>Flash <span>Sale.</span></h2></div>
+            <div class="countdown" aria-label="Thời gian còn lại"><span class="countdown-label">Kết thúc sau</span><b id="countdown-hours">08</b><i>:</i><b id="countdown-minutes">24</b><i>:</i><b id="countdown-seconds">51</b></div>
+          </div>
+          <a class="text-link" href="#featured">Xem tất cả <span>↗</span></a>
+        </div>
+        <div class="flash-track" id="flash-grid"></div>
+      </div>
+    </section>
+
+    <section class="showcase-section section-pad" id="laptop">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">POWER YOUR PLAY</span><h2>Laptop <span>Gaming.</span></h2></div>
+          <div class="heading-actions"><button class="sort-control" data-sort="laptop" aria-label="Sắp xếp laptop">Giá: nổi bật <span>⌄</span></button><a class="text-link" href="#featured">Xem tất cả <span>↗</span></a></div>
+        </div>
+        <div class="product-grid" id="laptop-grid"></div>
+      </div>
+    </section>
+
+    <section class="promo-banner-section">
+      <div class="container">
+        <div class="promo-banner">
+          <div class="promo-copy"><span class="eyebrow">YOUR DREAM SETUP STARTS HERE</span><h2>Chơi lớn.<br><span>Build chất.</span></h2><p>Chọn linh kiện. Chúng tôi lo phần còn lại.</p><a class="button button-light" href="#pc-gaming">Khám phá PC Gaming <span>↗</span></a></div>
+          <div class="promo-art"><div class="promo-glow"></div><img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1000&q=85" alt="Bộ máy tính gaming được lắp ráp chuyên nghiệp" loading="lazy"></div>
+          <div class="promo-caption"><span>01 — BUILD YOUR OWN</span><span>GAMING PC / 2025</span></div>
+          <span class="promo-orbit"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-section pc-section section-pad" id="pc-gaming">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">ENGINEERED TO DOMINATE</span><h2>PC Gaming <span>đỉnh cao.</span></h2></div>
+          <div class="heading-actions"><button class="sort-control" data-sort="pc" aria-label="Sắp xếp PC Gaming">Giá: nổi bật <span>⌄</span></button><a class="text-link" href="#featured">Xem tất cả <span>↗</span></a></div>
+        </div>
+        <div class="product-grid" id="pc-grid"></div>
+      </div>
+    </section>
+
+    <section class="component-section section-pad" id="components">
+      <div class="container">
+        <div class="component-heading">
+          <div><span class="eyebrow">THE HEART OF YOUR BUILD</span><h2>Linh kiện <span>nổi bật.</span></h2><p>Nâng cấp từng chi tiết, bứt phá mọi giới hạn.</p></div>
+          <a class="button button-outline" href="#featured">Khám phá linh kiện <span>↗</span></a>
+        </div>
+        <div class="product-grid" id="component-grid"></div>
+      </div>
+    </section>
+
+    <section class="showcase-section pc-section section-pad" id="gear">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">LEVEL UP YOUR SETUP</span><h2>Gear &amp; Setup <span>hoàn hảo.</span></h2></div>
+          <a class="text-link" href="#featured">Khám phá thêm <span>↗</span></a>
+        </div>
+        <div class="product-grid" id="gear-grid"></div>
+      </div>
+    </section>
+
+    <section class="showcase-section section-pad" id="featured">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">HANDPICKED FOR YOU</span><h2>Được yêu thích <span>nhất.</span></h2></div>
+          <div class="heading-actions">
+            <label class="sr-only" for="product-sort">Sắp xếp sản phẩm</label>
+            <select class="sort-select" id="product-sort"><option value="featured">Sắp xếp: nổi bật</option><option value="price-asc">Giá: thấp đến cao</option><option value="price-desc">Giá: cao đến thấp</option><option value="discount">Ưu đãi tốt nhất</option></select>
+            <a class="text-link" href="#featured">Xem tất cả <span>↗</span></a>
+          </div>
+        </div>
+        <div class="filter-row" id="filter-row">
+          <button class="filter-chip active" data-filter="all">Tất cả <span>15</span></button><button class="filter-chip" data-filter="laptop">Laptop</button><button class="filter-chip" data-filter="pc">PC Gaming</button><button class="filter-chip" data-filter="component">Linh kiện</button><button class="filter-chip" data-filter="gear">Màn hình &amp; Gear</button>
+          <span class="search-results" id="search-results" aria-live="polite"></span>
+        </div>
+        <div class="product-grid" id="featured-grid"></div>
+        <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>Chưa tìm thấy sản phẩm phù hợp</h3><p>Thử từ khóa khác hoặc bỏ bộ lọc để khám phá thêm nhé.</p><button class="button button-outline" id="clear-search">Xóa tìm kiếm</button></div>
+      </div>
+    </section>
+
+    <section class="brands-section">
+      <div class="container brands-inner"><span class="eyebrow">ĐỐI TÁC CÔNG NGHỆ</span><div class="brand-list" aria-label="Thương hiệu đối tác"><span>intel</span><span class="brand-nvidia">NVIDIA</span><span class="brand-asus">ASUS</span><span class="brand-msi">msi</span><span class="brand-acer">acer</span><span class="brand-logi">logitech</span></div></div>
+    </section>
+
+    <section class="news-section section-pad" id="news">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">TECHZONE JOURNAL</span><h2>Chuyện công nghệ <span>mới.</span></h2></div><a class="text-link" href="#news">Đọc tất cả bài viết <span>↗</span></a></div>
+        <div class="news-grid">
+        <article class="news-card news-featured"><a href="#news" class="news-image"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1000&q=80" alt="Góc máy tính gaming hiện đại" loading="lazy"><span class="news-category">GÓC GAMING</span></a><div class="news-info"><span class="news-meta">12.10.2026 <i>·</i> 6 phút đọc</span><h3><a href="#news">Setup góc gaming chuẩn pro: bắt đầu từ đâu?</a></h3><p>Từ chọn màn hình đến phối màu RGB, đây là checklist dành cho góc chơi game trong mơ của bạn.</p><a class="text-link" href="#news">Đọc bài viết <span>→</span></a></div></article>
+        <article class="news-card"><a href="#news" class="news-image"><img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80" alt="Linh kiện máy tính và bo mạch chủ" loading="lazy"><span class="news-category">HƯỚNG DẪN</span></a><div class="news-info"><span class="news-meta">08.10.2026 <i>·</i> 8 phút đọc</span><h3><a href="#news">Build PC gaming 30 triệu: cấu hình nào đáng tiền?</a></h3><a class="text-link" href="#news">Đọc bài viết <span>→</span></a></div></article>
+        <article class="news-card"><a href="#news" class="news-image"><img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80" alt="Laptop làm việc hiện đại" loading="lazy"><span class="news-category">KIẾN THỨC</span></a><div class="news-info"><span class="news-meta">03.10.2026 <i>·</i> 5 phút đọc</span><h3><a href="#news">RTX 50 Series có gì mới? Những điều game thủ cần biết</a></h3><a class="text-link" href="#news">Đọc bài viết <span>→</span></a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section"><div class="container newsletter-inner"><div><span class="eyebrow">JOIN THE ZONE</span><h2>Ưu đãi xịn, gửi <span>thẳng inbox.</span></h2><p>Đăng ký nhận tin để không bỏ lỡ deal ngon và xu hướng công nghệ mới nhất.</p></div><form id="newsletter-form" class="newsletter-form"><label class="sr-only" for="newsletter-email">Email của bạn</label><input id="newsletter-email" type="email" placeholder="Nhập email của bạn" required><button type="submit" aria-label="Đăng ký nhận tin">Đăng ký <span>↗</span></button></form></div></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-about"><a class="brand footer-brand" href="#"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-name">TECH<span>ZONE</span><small>BUILD YOUR NEXT</small></span></a><p>Không chỉ là thiết bị.<br>Là khởi đầu cho trải nghiệm khác biệt.</p><div class="social-links"><a href="#footer" aria-label="Facebook">f</a><a href="#footer" aria-label="Instagram">◎</a><a href="#footer" aria-label="Youtube">▶</a><a href="#footer" aria-label="TikTok">♪</a></div></div>
+      <div class="footer-column"><h3>Khám phá</h3><a href="#laptop">Laptop Gaming</a><a href="#pc-gaming">PC Gaming</a><a href="#components">Linh kiện PC</a><a href="#gear">Màn hình &amp; Gear</a><a href="#news">Tin công nghệ</a></div>
+      <div class="footer-column"><h3>Hỗ trợ khách hàng</h3><a href="#footer">Chính sách bảo hành</a><a href="#footer">Chính sách đổi trả</a><a href="#footer">Vận chuyển &amp; giao hàng</a><a href="#footer">Hướng dẫn mua hàng</a><a href="#footer">Câu hỏi thường gặp</a></div>
+      <div class="footer-contact"><h3>Liên hệ</h3><p><span>⌖</span> 123 Nguyễn Văn Linh, Q.7, TP.HCM</p><p><span>◷</span> 09:00 – 21:00 (Thứ 2 – Chủ nhật)</p><a href="tel:19006789"><span>↗</span> 1900 6789</a><a href="mailto:hello@techzone.vn"><span>✉</span> hello@techzone.vn</a><div class="payment-label">THANH TOÁN AN TOÀN</div><div class="payment-methods"><b>VISA</b><b>mastercard</b><b>MoMo</b></div></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 TECHZONE. Made for the next generation.</span><span>Điều khoản sử dụng <i>·</i> Chính sách bảo mật</span></div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Giỏ hàng" aria-hidden="true">
+    <div class="drawer-header"><div><span class="eyebrow">YOUR SELECTION</span><h2>Giỏ hàng <span id="drawer-item-count">(0)</span></h2></div><button class="close-button" id="cart-close" aria-label="Đóng giỏ hàng">×</button></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span>▱</span><h3>Giỏ hàng đang trống</h3><p>Thêm món đồ yêu thích để bắt đầu build setup nhé.</p><button class="button button-outline" id="continue-shopping">Tiếp tục mua sắm</button></div>
+    <div class="cart-summary" id="cart-summary"><div><span>Tạm tính</span><strong id="cart-subtotal">0₫</strong></div><div><span>Phí vận chuyển</span><strong class="free-shipping">Miễn phí</strong></div><div class="cart-total"><span>Tổng cộng</span><strong id="cart-total">0₫</strong></div><button class="button button-primary checkout-button" id="checkout-button">Tiến hành đặt hàng <span>→</span></button><small>Đã bao gồm VAT · Thanh toán an toàn</small></div>
+  </aside>
+
+  <dialog class="quick-view" id="quick-view" aria-label="Thông tin sản phẩm"><button class="close-button modal-close" id="modal-close" aria-label="Đóng">×</button><div class="quick-view-content" id="quick-view-content"></div></dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+</body>
+</html>
