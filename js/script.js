@@ -102,9 +102,67 @@ const wishlist = new Set();
 const state = { filter: "all", query: "", sort: "featured", wishlistOnly: false };
 const numberFormat = new Intl.NumberFormat("vi-VN");
 const findProduct = (id) => products.find((product) => product.id === id);
+const storageKey = "techzone-state-v1";
+const savedState = loadPersistentState();
 const formatPrice = (price) => `${numberFormat.format(price)}₫`;
 const discountPercent = (product) => Math.round((1 - product.price / product.oldPrice) * 100);
 const categoryLabel = (category) => categoryNames[category] || "Sản phẩm công nghệ";
+
+function loadPersistentState() {
+  let serialized;
+  try {
+    serialized = localStorage.getItem(storageKey);
+  } catch (error) {
+    console.error("Không thể đọc dữ liệu TECHZONE từ localStorage:", error);
+    return null;
+  }
+  if (!serialized) return null;
+
+  try {
+    const stored = JSON.parse(serialized);
+    if (!stored || typeof stored !== "object" || Array.isArray(stored)) {
+      throw new TypeError("Dữ liệu TECHZONE đã lưu không hợp lệ.");
+    }
+    return stored;
+  } catch (error) {
+    console.error("Không thể phân tích dữ liệu TECHZONE đã lưu:", error);
+    return null;
+  }
+}
+
+function savePersistentState() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify({
+      cart: [...cart.entries()],
+      wishlist: [...wishlist],
+      state
+    }));
+  } catch (error) {
+    console.error("Không thể lưu dữ liệu TECHZONE vào localStorage:", error);
+  }
+}
+
+if (Array.isArray(savedState?.cart)) {
+  savedState.cart.forEach((entry) => {
+    if (!Array.isArray(entry) || entry.length !== 2) return;
+    const [id, quantity] = entry;
+    if (findProduct(id) && Number.isSafeInteger(quantity) && quantity > 0) cart.set(id, quantity);
+  });
+}
+if (Array.isArray(savedState?.wishlist)) {
+  savedState.wishlist.forEach((id) => {
+    if (findProduct(id)) wishlist.add(id);
+  });
+}
+if (savedState?.state && typeof savedState.state === "object") {
+  const savedFilter = savedState.state.filter;
+  if (["all", ...Object.keys(categoryNames)].includes(savedFilter)) state.filter = savedFilter;
+  if (typeof savedState.state.query === "string") state.query = savedState.state.query;
+  if (["featured", "price-asc", "price-desc", "discount"].includes(savedState.state.sort)) {
+    state.sort = savedState.state.sort;
+  }
+  if (typeof savedState.state.wishlistOnly === "boolean") state.wishlistOnly = savedState.state.wishlistOnly;
+}
 
 function imageMarkup(product) {
   const fallback = product.category === "laptop" ? "▱" : product.category === "pc" ? "▣" : "◈";
@@ -216,6 +274,7 @@ function addToCart(id) {
   const product = findProduct(id);
   if (!product) return;
   cart.set(id, (cart.get(id) || 0) + 1);
+  savePersistentState();
   renderCart();
   showToast(`Đã thêm ${product.name} vào giỏ hàng`);
 }
@@ -226,6 +285,7 @@ function toggleWishlist(id) {
   const added = !wishlist.has(id);
   if (added) wishlist.add(id);
   else wishlist.delete(id);
+  savePersistentState();
   document.querySelectorAll(`.wish-button[data-id="${id}"]`).forEach((button) => {
     button.classList.toggle("is-active", added);
     button.setAttribute("aria-label", added ? "Bỏ yêu thích" : "Thêm vào yêu thích");
@@ -262,10 +322,12 @@ function setupInteractions() {
         const next = (cart.get(id) || 0) + Number(action.dataset.delta);
         if (next <= 0) cart.delete(id);
         else cart.set(id, next);
+        savePersistentState();
         renderCart();
       }
       if (actionName === "remove-cart") {
         cart.delete(id);
+        savePersistentState();
         renderCart();
         showToast("Đã xóa sản phẩm khỏi giỏ hàng");
       }
@@ -302,9 +364,12 @@ function setupInteractions() {
   });
 
   const searchInput = document.querySelector("#search-input");
+  searchInput.value = state.query;
+  document.querySelector("#product-sort").value = state.sort;
   searchInput.addEventListener("input", () => {
     state.query = searchInput.value.trim();
     state.wishlistOnly = false;
+    savePersistentState();
     renderFeatured();
   });
   document.querySelector("#search-form").addEventListener("submit", (event) => {
@@ -328,10 +393,12 @@ function setupInteractions() {
   document.querySelectorAll(".filter-chip").forEach((chip) => chip.addEventListener("click", () => {
     state.filter = chip.dataset.filter;
     state.wishlistOnly = false;
+    savePersistentState();
     renderFeatured();
   }));
   document.querySelector("#product-sort").addEventListener("change", (event) => {
     state.sort = event.target.value;
+    savePersistentState();
     renderFeatured();
   });
   document.querySelector("#clear-search").addEventListener("click", () => {
@@ -339,11 +406,13 @@ function setupInteractions() {
     state.filter = "all";
     state.wishlistOnly = false;
     searchInput.value = "";
+    savePersistentState();
     renderFeatured();
   });
   document.querySelector("#wishlist-shortcut").addEventListener("click", () => {
     state.wishlistOnly = !state.wishlistOnly;
     state.filter = "all";
+    savePersistentState();
     document.querySelector("#featured").scrollIntoView({ behavior: "smooth" });
     renderFeatured();
     if (state.wishlistOnly && wishlist.size === 0) showToast("Danh sách yêu thích của bạn đang trống");

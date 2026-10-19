@@ -42,6 +42,7 @@ DeAnNhom9/
 - Mở/đóng mega menu, menu mobile và modal xem nhanh sản phẩm.
 - Thêm, xóa, tăng/giảm số lượng sản phẩm trong giỏ; tự cập nhật tổng tiền.
 - Bật/tắt yêu thích và xem danh sách sản phẩm đã yêu thích.
+- Lưu giỏ hàng, danh sách yêu thích, bộ lọc, từ khóa tìm kiếm và cách sắp xếp vào `localStorage` để khôi phục sau khi tải lại trang.
 - Hiển thị thông báo mẫu khi thêm giỏ hàng, yêu thích hoặc gửi email.
 
 > Đây là bản demo giao diện. Đăng nhập, thanh toán, gửi email và đặt hàng chưa kết nối dịch vụ thực tế.
@@ -50,7 +51,7 @@ DeAnNhom9/
 
 - **HTML5:** chia trang thành các khu vực ngữ nghĩa; sản phẩm được render từ dữ liệu JavaScript.
 - **CSS3:** thiết kế component theo các nhóm giao diện, sử dụng custom properties trong `:root` để quản lý màu, font và chiều rộng nội dung.
-- **JavaScript thuần:** lưu dữ liệu mẫu trong mảng `products`; quản lý giỏ hàng và yêu thích phía trình duyệt; cập nhật các khu vực giao diện từ sự kiện người dùng.
+- **JavaScript thuần:** lưu dữ liệu mẫu trong mảng `products`; quản lý giỏ hàng và yêu thích phía trình duyệt; lưu trạng thái mua sắm vào `localStorage`; cập nhật các khu vực giao diện từ sự kiện người dùng.
 - **Responsive:** media queries tại các breakpoint `1050px`, `780px` và `480px`.
 - **Khả năng truy cập:** nhãn cho nút và ô nhập liệu, thông báo trạng thái, hỗ trợ bàn phím và `prefers-reduced-motion`.
 

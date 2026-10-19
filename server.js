@@ -77,6 +77,35 @@ const server = http.createServer((request, response) => {
 });
 
 server.on("error", (error) => {
+  if (error.code === "EADDRINUSE") {
+    const request = http.get(`http://127.0.0.1:${port}/`, (response) => {
+      let body = "";
+      response.setEncoding("utf8");
+      response.on("data", (chunk) => {
+        body += chunk;
+      });
+      response.on("end", () => {
+        if (
+          response.statusCode === 200 &&
+          response.headers["content-type"]?.startsWith("text/html") &&
+          body.includes("<title>TECHZONE — Công nghệ trong tầm tay</title>")
+        ) {
+          console.log(`TECHZONE server already running at http://localhost:${port}`);
+          console.log(`TECHZONE server ready at http://localhost:${port}`);
+          return;
+        }
+
+        console.error(`Port ${port} is already in use by a different service.`);
+        process.exitCode = 1;
+      });
+    });
+    request.on("error", (requestError) => {
+      console.error("Could not verify the server already using port 5050:", requestError.message);
+      process.exitCode = 1;
+    });
+    return;
+  }
+
   console.error("Could not start TECHZONE server:", error.message);
   process.exitCode = 1;
 });
