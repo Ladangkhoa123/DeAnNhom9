@@ -31,7 +31,7 @@ const server = http.createServer((request, response) => {
 
   const relativePath = pathname === "/" ? "index.html" : pathname.slice(1);
   const topLevelDirectory = relativePath.split(/[\\/]/, 1)[0];
-  if (relativePath !== "index.html" && !["css", "js", "image"].includes(topLevelDirectory)) {
+  if (!["index.html", "login.html"].includes(relativePath) && !["css", "js", "image"].includes(topLevelDirectory)) {
     response.writeHead(404).end("Not found");
     return;
   }

@@ -254,6 +254,14 @@
   </aside>
 
   <dialog class="quick-view" id="quick-view" aria-label="Thông tin sản phẩm"><button class="close-button modal-close" id="modal-close" aria-label="Đóng">×</button><div class="quick-view-content" id="quick-view-content"></div></dialog>
+  <aside class="comparison-tray" id="comparison-tray" aria-label="Sản phẩm đang chọn để so sánh" hidden>
+    <div class="comparison-tray-copy"><strong>So sánh sản phẩm</strong><span id="comparison-selection"></span></div>
+    <button class="button button-primary" id="compare-open" type="button" disabled>Chọn thêm 1 sản phẩm</button>
+  </aside>
+  <dialog class="comparison-dialog" id="comparison-dialog" aria-labelledby="comparison-title">
+    <div class="comparison-dialog-header"><div><span class="eyebrow">COMPARE PRODUCTS</span><h2 id="comparison-title">So sánh sản phẩm</h2></div><button class="close-button" id="comparison-close" type="button" aria-label="Đóng">×</button></div>
+    <div id="comparison-content"></div>
+  </dialog>
   <div class="toast-region" id="toast-region" aria-live="polite"></div>
 </body>
 </html>

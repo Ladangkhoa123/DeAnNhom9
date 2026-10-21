@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="Đăng nhập TECHZONE để lưu sản phẩm yêu thích và tiếp tục mua sắm.">
+  <title>Đăng nhập — TECHZONE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="login-card" aria-labelledby="login-title">
+      <a class="brand login-brand" href="index.html" aria-label="TECHZONE - Trang chủ">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">TECH<span>ZONE</span><small>BUILD YOUR NEXT</small></span>
+      </a>
+      <span class="eyebrow login-eyebrow"><span class="live-dot"></span> YOUR TECHZONE ACCOUNT</span>
+      <h1 id="login-title">Chào mừng <span>trở lại.</span></h1>
+      <p class="login-intro">Đăng nhập để lưu món đồ yêu thích và tiếp tục xây dựng góc máy của bạn.</p>
+
+      <form class="login-form" id="login-form">
+        <label for="login-email">Email</label>
+        <input id="login-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+        <label for="login-password">Mật khẩu</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required>
+        <p class="login-error" id="login-error" role="alert" hidden></p>
+        <button class="button button-primary login-submit" type="submit">Đăng nhập <span>→</span></button>
+      </form>
+
+      <p class="login-note">Đây là bản demo giao diện. Thông tin đăng nhập chỉ được mô phỏng trong trình duyệt, chưa xác thực với máy chủ.</p>
+      <a class="login-back" href="index.html">← Quay lại cửa hàng</a>
+    </section>
+    <aside class="login-aside" aria-label="Thông tin TECHZONE">
+      <div class="login-glow"></div>
+      <span class="eyebrow">BUILD YOUR NEXT</span>
+      <h2>Mỗi lựa chọn<br>mở ra <span>một trải nghiệm.</span></h2>
+      <p>Đăng nhập để giữ lại những thiết bị bạn đang quan tâm.</p>
+      <div class="login-aside-mark">TZ<span>.</span></div>
+    </aside>
+  </main>
+
+  <script>
+    const form = document.querySelector("#login-form");
+    const errorMessage = document.querySelector("#login-error");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      errorMessage.hidden = true;
+
+      const email = new FormData(form).get("email").trim().toLowerCase();
+      const nextUrl = new URL("index.html", window.location.href);
+      const params = new URLSearchParams(window.location.search);
+      const intent = params.get("intent");
+      const product = params.get("product");
+      if (["add-cart", "wishlist"].includes(intent) && product) {
+        nextUrl.searchParams.set("intent", intent);
+        nextUrl.searchParams.set("product", product);
+      }
+
+      try {
+        localStorage.setItem("techzone-session-v1", JSON.stringify({ email }));
+      } catch (error) {
+        console.error("Không thể lưu trạng thái đăng nhập TECHZONE:", error);
+        errorMessage.textContent = "Không thể lưu phiên đăng nhập trên trình duyệt này. Vui lòng kiểm tra cài đặt lưu trữ.";
+        errorMessage.hidden = false;
+        return;
+      }
+
+      window.location.href = nextUrl.href;
+    });
+  </script>
+</body>
+</html>

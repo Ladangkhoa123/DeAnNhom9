@@ -7,6 +7,7 @@ TECHZONE là giao diện website thương mại điện tử giới thiệu lapt
 1. Mở thư mục `DeAnNhom9` trong VS Code.
 2. Mở `index.html` trực tiếp trong trình duyệt.
 3. Hoặc dùng tiện ích Live Server trong VS Code để tự tải lại trang khi chỉnh sửa.
+4. Hoặc chạy `node server.js` rồi mở `http://localhost:5050`.
 
 Không cần chạy lệnh cài đặt. Font và ảnh minh họa được tải từ CDN nên cần kết nối Internet để hiển thị đầy đủ. Nếu ảnh sản phẩm không tải được, giao diện sẽ dùng nền và biểu tượng dự phòng.
 
@@ -15,10 +16,12 @@ Không cần chạy lệnh cài đặt. Font và ảnh minh họa được tải
 ```text
 DeAnNhom9/
 ├── index.html       # Cấu trúc và nội dung trang chủ
+├── login.html       # Trang đăng nhập demo
 ├── README.md        # Hướng dẫn, tính năng và prompt tham khảo
 ├── skile.md         # Yêu cầu thiết kế ban đầu
 ├── css/
-│   └── style.css    # Giao diện, hiệu ứng và responsive
+│   ├── style.css    # Giao diện, hiệu ứng và responsive
+│   └── login.css    # Giao diện đăng nhập
 └── js/
     └── script.js   # Dữ liệu sản phẩm và tương tác frontend
 ```
@@ -42,10 +45,13 @@ DeAnNhom9/
 - Mở/đóng mega menu, menu mobile và modal xem nhanh sản phẩm.
 - Thêm, xóa, tăng/giảm số lượng sản phẩm trong giỏ; tự cập nhật tổng tiền.
 - Bật/tắt yêu thích và xem danh sách sản phẩm đã yêu thích.
+- So sánh nhanh tối đa hai sản phẩm theo loại, cấu hình, giá, mức tiết kiệm và đánh giá hiện có.
+- Gửi nhận xét và chấm sao cho sản phẩm; đánh giá demo được lưu trong trình duyệt hiện tại.
+- Yêu cầu đăng nhập trước khi thêm sản phẩm vào giỏ hoặc danh sách yêu thích; sau khi đăng nhập sẽ tiếp tục thao tác vừa chọn.
 - Lưu giỏ hàng, danh sách yêu thích, bộ lọc, từ khóa tìm kiếm và cách sắp xếp vào `localStorage` để khôi phục sau khi tải lại trang.
 - Hiển thị thông báo mẫu khi thêm giỏ hàng, yêu thích hoặc gửi email.
 
-> Đây là bản demo giao diện. Đăng nhập, thanh toán, gửi email và đặt hàng chưa kết nối dịch vụ thực tế.
+> Đây là bản demo giao diện. Đăng nhập chỉ mô phỏng phiên người dùng trong trình duyệt, chưa xác thực với máy chủ; thanh toán, gửi email và đặt hàng cũng chưa kết nối dịch vụ thực tế.
 
 ## Công nghệ và tổ chức mã nguồn
 
