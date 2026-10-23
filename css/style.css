@@ -426,6 +426,46 @@ img { display: block; max-width: 100%; }
 .comparison-product-heading { display: grid; justify-items: start; gap: 9px; }
 .comparison-product-heading img { width: 90px; height: 64px; object-fit: contain; mix-blend-mode: multiply; }
 .comparison-product-heading strong { color: #30363a; }
+.receipt-dialog { position: fixed; inset: 50% auto auto 50%; width: min(800px, calc(100% - 28px)); max-width: unset; max-height: 90vh; overflow: auto; padding: 28px; border: 0; border-radius: 8px; color: #292e32; background: #fff; box-shadow: 0 28px 90px rgba(0,0,0,.3); transform: translate(-50%, -50%); }
+.receipt-dialog::backdrop { background: rgba(6,8,9,.68); backdrop-filter: blur(3px); }
+.receipt-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+.receipt-actions > div { display: flex; align-items: center; gap: 9px; }
+.receipt-actions .button { min-height: 34px; gap: 8px; padding: 0 11px; font-size: 10px; }
+.receipt-demo-label { color: #a34a13; font-size: 9px; font-weight: 800; letter-spacing: .08em; }
+.receipt-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid #e7e9ea; }
+.receipt-brand { color: #202326; }
+.receipt-brand .brand-name { font-size: 18px; }
+.receipt-heading > div { text-align: right; }
+.receipt-heading .eyebrow { font-size: 8px; }
+.receipt-heading h2 { margin: 6px 0 0; font: 600 23px var(--display); letter-spacing: -.04em; }
+.receipt-heading h2 span { color: #767d82; font: 500 13px var(--font); }
+.receipt-status { display: grid; gap: 4px; margin: 18px 0; padding: 13px 15px; border-left: 3px solid #db8b24; background: #fff8e9; }
+.receipt-status strong { color: #78500e; font-size: 10px; letter-spacing: .04em; }
+.receipt-status span { color: #776c58; font-size: 10px; }
+.receipt-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px 24px; margin: 20px 0; }
+.receipt-meta div, .receipt-totals > div { display: flex; justify-content: space-between; gap: 12px; }
+.receipt-meta div { flex-direction: column; gap: 4px; }
+.receipt-meta span, .receipt-totals span { color: #767d82; font-size: 10px; }
+.receipt-meta strong, .receipt-totals strong { font-size: 11px; overflow-wrap: anywhere; }
+.receipt-table-wrap { overflow-x: auto; }
+.receipt-table { width: 100%; border-collapse: collapse; text-align: left; }
+.receipt-table th { padding: 10px 8px; color: #737a7f; background: #f5f6f7; font-size: 9px; }
+.receipt-table td { padding: 12px 8px; border-bottom: 1px solid #eceeef; font-size: 10px; white-space: nowrap; }
+.receipt-table th:first-child, .receipt-table td:first-child { width: 48%; white-space: normal; }
+.receipt-table td strong, .receipt-table td small { display: block; }
+.receipt-table td strong { line-height: 1.5; }
+.receipt-table td small { margin-top: 3px; color: #8a9094; font-size: 8px; }
+.receipt-totals { display: grid; gap: 11px; width: min(330px, 100%); margin: 18px 0 0 auto; }
+.receipt-totals .receipt-grand-total { align-items: center; margin-top: 3px; padding-top: 13px; border-top: 1px solid #dfe2e4; }
+.receipt-grand-total span { color: #292e32; font-weight: 700; }
+.receipt-grand-total strong { color: var(--red); font: 700 17px var(--display); }
+.receipt-note { margin: 24px 0 0; padding-top: 14px; border-top: 1px solid #eceeef; color: #737a7f; font-size: 9px; line-height: 1.6; }
+@media print {
+  body * { visibility: hidden !important; }
+  #receipt-dialog, #receipt-dialog * { visibility: visible !important; }
+  #receipt-dialog { position: absolute; inset: 0 auto auto 0; width: 100%; max-width: none; max-height: none; overflow: visible; padding: 0; border-radius: 0; box-shadow: none; transform: none; }
+  #receipt-dialog::backdrop, .receipt-actions { display: none !important; }
+}
 .toast-region { position: fixed; right: 22px; bottom: 22px; z-index: 80; display: grid; gap: 9px; }
 .toast { min-width: 245px; max-width: min(360px,calc(100vw - 30px)); display: flex; align-items: center; gap: 10px; padding: 13px 16px; border: 1px solid #363b3e; border-radius: 5px; color: #f4f5f5; background: #191d1f; box-shadow: 0 12px 35px rgba(0,0,0,.2); font-size: 10px; animation: toastIn .28s ease both; }
 .toast-icon { width: 20px; height: 20px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; color: #13200e; background: var(--green); font-size: 11px; font-weight: 800; }

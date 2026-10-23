@@ -250,7 +250,7 @@
     <div class="drawer-header"><div><span class="eyebrow">YOUR SELECTION</span><h2>Giỏ hàng <span id="drawer-item-count">(0)</span></h2></div><button class="close-button" id="cart-close" aria-label="Đóng giỏ hàng">×</button></div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-empty" id="cart-empty"><span>▱</span><h3>Giỏ hàng đang trống</h3><p>Thêm món đồ yêu thích để bắt đầu build setup nhé.</p><button class="button button-outline" id="continue-shopping">Tiếp tục mua sắm</button></div>
-    <div class="cart-summary" id="cart-summary"><div><span>Tạm tính</span><strong id="cart-subtotal">0₫</strong></div><div><span>Phí vận chuyển</span><strong class="free-shipping">Miễn phí</strong></div><div class="cart-total"><span>Tổng cộng</span><strong id="cart-total">0₫</strong></div><button class="button button-primary checkout-button" id="checkout-button">Tiến hành đặt hàng <span>→</span></button><small>Đã bao gồm VAT · Thanh toán an toàn</small></div>
+    <div class="cart-summary" id="cart-summary"><div><span>Tạm tính</span><strong id="cart-subtotal">0₫</strong></div><div><span>Phí vận chuyển</span><strong class="free-shipping">Miễn phí</strong></div><div class="cart-total"><span>Tổng cộng</span><strong id="cart-total">0₫</strong></div><button class="button button-primary checkout-button" id="checkout-button">Hoàn tất đơn hàng (Demo) <span>→</span></button><small>Thanh toán mô phỏng · Chưa phát sinh giao dịch thật</small></div>
   </aside>
 
   <dialog class="quick-view" id="quick-view" aria-label="Thông tin sản phẩm"><button class="close-button modal-close" id="modal-close" aria-label="Đóng">×</button><div class="quick-view-content" id="quick-view-content"></div></dialog>
@@ -261,6 +261,10 @@
   <dialog class="comparison-dialog" id="comparison-dialog" aria-labelledby="comparison-title">
     <div class="comparison-dialog-header"><div><span class="eyebrow">COMPARE PRODUCTS</span><h2 id="comparison-title">So sánh sản phẩm</h2></div><button class="close-button" id="comparison-close" type="button" aria-label="Đóng">×</button></div>
     <div id="comparison-content"></div>
+  </dialog>
+  <dialog class="receipt-dialog" id="receipt-dialog" aria-labelledby="receipt-title">
+    <div class="receipt-actions"><span class="receipt-demo-label">BẢN DEMO · KHÔNG PHẢI CHỨNG TỪ THU TIỀN</span><div><button class="button button-outline" id="receipt-print" type="button">In / Lưu PDF</button><button class="close-button" id="receipt-close" type="button" aria-label="Đóng hóa đơn">×</button></div></div>
+    <div id="receipt-content"></div>
   </dialog>
   <div class="toast-region" id="toast-region" aria-live="polite"></div>
 </body>

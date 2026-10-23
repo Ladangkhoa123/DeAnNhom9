@@ -48,10 +48,11 @@ DeAnNhom9/
 - So sánh nhanh tối đa hai sản phẩm theo loại, cấu hình, giá, mức tiết kiệm và đánh giá hiện có.
 - Gửi nhận xét và chấm sao cho sản phẩm; đánh giá demo được lưu trong trình duyệt hiện tại.
 - Yêu cầu đăng nhập trước khi thêm sản phẩm vào giỏ hoặc danh sách yêu thích; sau khi đăng nhập sẽ tiếp tục thao tác vừa chọn.
+- Hoàn tất đơn hàng demo để tạo phiếu báo giá/hóa đơn có mã đơn, thông tin khách hàng, danh sách sản phẩm và tổng tiền; hỗ trợ in hoặc lưu PDF.
 - Lưu giỏ hàng, danh sách yêu thích, bộ lọc, từ khóa tìm kiếm và cách sắp xếp vào `localStorage` để khôi phục sau khi tải lại trang.
 - Hiển thị thông báo mẫu khi thêm giỏ hàng, yêu thích hoặc gửi email.
 
-> Đây là bản demo giao diện. Đăng nhập chỉ mô phỏng phiên người dùng trong trình duyệt, chưa xác thực với máy chủ; thanh toán, gửi email và đặt hàng cũng chưa kết nối dịch vụ thực tế.
+> Đây là bản demo giao diện. Đăng nhập chỉ mô phỏng phiên người dùng trong trình duyệt, chưa xác thực với máy chủ; thanh toán, gửi email và đặt hàng chưa kết nối dịch vụ thực tế. Phiếu đơn hàng demo không xác nhận đã thu tiền và không thay thế hóa đơn tài chính.
 
 ## Công nghệ và tổ chức mã nguồn
 

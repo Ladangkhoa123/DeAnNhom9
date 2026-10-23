@@ -382,6 +382,36 @@ function renderCart() {
   updateCounts();
 }
 
+function renderReceipt(order) {
+  const orderDate = new Intl.DateTimeFormat("vi-VN", { dateStyle: "long", timeStyle: "short" }).format(order.createdAt);
+  document.querySelector("#receipt-content").innerHTML = `
+    <header class="receipt-heading">
+      <a class="brand receipt-brand" href="#" aria-label="TECHZONE"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-name">TECH<span>ZONE</span><small>BUILD YOUR NEXT</small></span></a>
+      <div><span class="eyebrow">PHIẾU XÁC NHẬN ĐƠN HÀNG</span><h2 id="receipt-title">Báo giá / Hóa đơn <span>(Demo)</span></h2></div>
+    </header>
+    <div class="receipt-status"><strong>ĐƠN HÀNG ĐÃ HOÀN TẤT (MÔ PHỎNG)</strong><span>Chưa có giao dịch thanh toán thật được thực hiện.</span></div>
+    <div class="receipt-meta">
+      <div><span>Mã đơn hàng</span><strong>${escapeHTML(order.id)}</strong></div>
+      <div><span>Ngày tạo</span><strong>${escapeHTML(orderDate)}</strong></div>
+      <div><span>Khách hàng</span><strong>${escapeHTML(order.email)}</strong></div>
+      <div><span>Phương thức</span><strong>Thanh toán mô phỏng (Demo)</strong></div>
+    </div>
+    <div class="receipt-table-wrap">
+      <table class="receipt-table">
+        <thead><tr><th>Sản phẩm</th><th>Đơn giá</th><th>Số lượng</th><th>Thành tiền</th></tr></thead>
+        <tbody>${order.items.map((item) => `<tr><td><strong>${escapeHTML(item.name)}</strong><small>${escapeHTML(item.code)}</small></td><td>${formatPrice(item.price)}</td><td>${item.quantity}</td><td>${formatPrice(item.price * item.quantity)}</td></tr>`).join("")}</tbody>
+      </table>
+    </div>
+    <div class="receipt-totals">
+      <div><span>Tạm tính</span><strong>${formatPrice(order.subtotal)}</strong></div>
+      <div><span>Phí vận chuyển</span><strong>Miễn phí</strong></div>
+      <div class="receipt-grand-total"><span>Tổng cộng (đã gồm VAT)</span><strong>${formatPrice(order.subtotal)}</strong></div>
+    </div>
+    <p class="receipt-note">Cảm ơn bạn đã chọn TECHZONE. Phiếu này chỉ xác nhận đơn hàng trong bản demo và không thay thế hóa đơn tài chính.</p>`;
+  document.querySelector("#receipt-dialog").showModal();
+  document.querySelector("#receipt-close").focus();
+}
+
 function setCartOpen(open) {
   const drawer = document.querySelector("#cart-drawer");
   const overlay = document.querySelector("#overlay");
@@ -620,6 +650,11 @@ function setupInteractions() {
   document.querySelector("#comparison-dialog").addEventListener("click", (event) => {
     if (event.target === event.currentTarget) event.currentTarget.close();
   });
+  document.querySelector("#receipt-close").addEventListener("click", () => document.querySelector("#receipt-dialog").close());
+  document.querySelector("#receipt-print").addEventListener("click", () => window.print());
+  document.querySelector("#receipt-dialog").addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) event.currentTarget.close();
+  });
   document.querySelector("#quick-view").addEventListener("click", (event) => {
     if (event.target === event.currentTarget) event.currentTarget.close();
   });
@@ -700,7 +735,28 @@ function setupInteractions() {
   });
   document.querySelector("#checkout-button").addEventListener("click", () => {
     if (!requireLogin()) return;
-    showToast("Đây là bản demo giao diện — chức năng đặt hàng chưa được kết nối.");
+    const items = [...cart.entries()].map(([id, quantity]) => {
+      const product = findProduct(id);
+      return product ? { name: product.name, code: product.code, price: product.price, quantity } : null;
+    }).filter(Boolean);
+    if (items.length === 0) {
+      showToast("Giỏ hàng đang trống.");
+      return;
+    }
+
+    const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const order = {
+      id: `TZ-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
+      createdAt: new Date(),
+      email: getSignedInUser().email,
+      items,
+      subtotal
+    };
+    cart.clear();
+    savePersistentState();
+    renderCart();
+    setCartOpen(false);
+    renderReceipt(order);
   });
 }
 
