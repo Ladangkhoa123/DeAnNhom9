@@ -38,6 +38,7 @@ DeAnNhom9/
 
 ## Tương tác frontend
 
+- Chuyển đổi giao diện sáng/tối từ header; màu sắc toàn trang và các hộp thoại được cập nhật, lựa chọn được lưu trong `localStorage`.
 - Tìm kiếm sản phẩm theo tên, mã sản phẩm và thông số.
 - Lọc sản phẩm theo Laptop, PC Gaming, linh kiện hoặc gear.
 - Sắp xếp danh sách theo giá tăng/giảm hoặc mức giảm giá.
@@ -48,7 +49,7 @@ DeAnNhom9/
 - So sánh nhanh tối đa hai sản phẩm theo loại, cấu hình, giá, mức tiết kiệm và đánh giá hiện có.
 - Gửi nhận xét và chấm sao cho sản phẩm; đánh giá demo được lưu trong trình duyệt hiện tại.
 - Yêu cầu đăng nhập trước khi thêm sản phẩm vào giỏ hoặc danh sách yêu thích; sau khi đăng nhập sẽ tiếp tục thao tác vừa chọn.
-- Hoàn tất đơn hàng demo để tạo phiếu báo giá/hóa đơn có mã đơn, thông tin khách hàng, danh sách sản phẩm và tổng tiền; hỗ trợ in hoặc lưu PDF.
+- Hoàn tất đơn hàng demo bằng cách nhập tên người nhận, số điện thoại và địa chỉ giao hàng; phiếu xác nhận hiển thị thông tin giao hàng, danh sách sản phẩm và tổng tiền, đồng thời hỗ trợ in hoặc lưu PDF.
 - Lưu giỏ hàng, danh sách yêu thích, bộ lọc, từ khóa tìm kiếm và cách sắp xếp vào `localStorage` để khôi phục sau khi tải lại trang.
 - Hiển thị thông báo mẫu khi thêm giỏ hàng, yêu thích hoặc gửi email.
 

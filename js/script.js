@@ -122,6 +122,7 @@ const findProduct = (id) => products.find((product) => product.id === id);
 const storageKey = "techzone-state-v1";
 const sessionKey = "techzone-session-v1";
 const reviewsStorageKey = "techzone-reviews-v1";
+const themeStorageKey = "techzone-theme-v1";
 const savedState = loadPersistentState();
 const formatPrice = (price) => `${numberFormat.format(price)}₫`;
 const discountPercent = (product) => Math.round((1 - product.price / product.oldPrice) * 100);
@@ -135,6 +136,32 @@ function getSignedInUser() {
     console.error("Không thể đọc trạng thái đăng nhập TECHZONE:", error);
     return null;
   }
+}
+
+function applyTheme(theme) {
+  const normalized = theme === "light" ? "light" : "dark";
+  document.body.dataset.theme = normalized;
+  const toggleButton = document.querySelector("#theme-toggle");
+  if (!toggleButton) return;
+
+  const actionLabel = toggleButton.querySelector(".action-label");
+  const actionIcon = toggleButton.querySelector(".action-icon");
+  const darkMode = normalized === "dark";
+  toggleButton.setAttribute("aria-label", darkMode ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối");
+  if (actionLabel) actionLabel.textContent = darkMode ? "Tối" : "Sáng";
+  if (actionIcon) actionIcon.textContent = darkMode ? "☾" : "☀";
+  toggleButton.classList.toggle("is-light", !darkMode);
+}
+
+function initializeTheme() {
+  let preferredTheme = "dark";
+  try {
+    const storedTheme = localStorage.getItem(themeStorageKey);
+    if (storedTheme === "light" || storedTheme === "dark") preferredTheme = storedTheme;
+  } catch (error) {
+    console.error("Không thể đọc chủ đề TECHZONE:", error);
+  }
+  applyTheme(preferredTheme);
 }
 
 function requireLogin(action, id) {
@@ -393,7 +420,10 @@ function renderReceipt(order) {
     <div class="receipt-meta">
       <div><span>Mã đơn hàng</span><strong>${escapeHTML(order.id)}</strong></div>
       <div><span>Ngày tạo</span><strong>${escapeHTML(orderDate)}</strong></div>
-      <div><span>Khách hàng</span><strong>${escapeHTML(order.email)}</strong></div>
+      <div><span>Người nhận</span><strong>${escapeHTML(order.customer.name)}</strong></div>
+      <div><span>Số điện thoại</span><strong>${escapeHTML(order.customer.phone)}</strong></div>
+      <div><span>Email</span><strong>${escapeHTML(order.email)}</strong></div>
+      <div><span>Địa chỉ giao hàng</span><strong>${escapeHTML(order.customer.address)}</strong></div>
       <div><span>Phương thức</span><strong>Thanh toán mô phỏng (Demo)</strong></div>
     </div>
     <div class="receipt-table-wrap">
@@ -650,6 +680,13 @@ function setupInteractions() {
   document.querySelector("#comparison-dialog").addEventListener("click", (event) => {
     if (event.target === event.currentTarget) event.currentTarget.close();
   });
+  const checkoutDialog = document.querySelector("#checkout-dialog");
+  const checkoutForm = document.querySelector("#checkout-form");
+  document.querySelector("#checkout-close").addEventListener("click", () => checkoutDialog.close());
+  document.querySelector("#checkout-cancel").addEventListener("click", () => checkoutDialog.close());
+  checkoutDialog.addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) checkoutDialog.close();
+  });
   document.querySelector("#receipt-close").addEventListener("click", () => document.querySelector("#receipt-dialog").close());
   document.querySelector("#receipt-print").addEventListener("click", () => window.print());
   document.querySelector("#receipt-dialog").addEventListener("click", (event) => {
@@ -733,8 +770,41 @@ function setupInteractions() {
     showToast("Cảm ơn bạn! TECHZONE sẽ gửi tin mới nhất đến inbox.");
     event.currentTarget.reset();
   });
+  document.querySelector("#theme-toggle").addEventListener("click", () => {
+    const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem(themeStorageKey, nextTheme);
+    } catch (error) {
+      console.error("Không thể lưu chủ đề TECHZONE:", error);
+      showToast("Không thể lưu cài đặt giao diện. Vui lòng thử lại.");
+      return;
+    }
+    applyTheme(nextTheme);
+    showToast(nextTheme === "dark" ? "Đã chuyển sang giao diện tối." : "Đã chuyển sang giao diện sáng.");
+  });
   document.querySelector("#checkout-button").addEventListener("click", () => {
     if (!requireLogin()) return;
+    const subtotal = [...cart.entries()].reduce((sum, [id, quantity]) => {
+      const product = findProduct(id);
+      return sum + (product ? product.price * quantity : 0);
+    }, 0);
+    if (subtotal === 0) {
+      showToast("Giỏ hàng đang trống.");
+      return;
+    }
+    document.querySelector("#checkout-total").textContent = formatPrice(subtotal);
+    checkoutDialog.showModal();
+    document.querySelector("#delivery-name").focus();
+  });
+  checkoutForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const user = getSignedInUser();
+    if (!user) {
+      checkoutDialog.close();
+      requireLogin();
+      return;
+    }
+    const formData = new FormData(checkoutForm);
     const items = [...cart.entries()].map(([id, quantity]) => {
       const product = findProduct(id);
       return product ? { name: product.name, code: product.code, price: product.price, quantity } : null;
@@ -744,14 +814,33 @@ function setupInteractions() {
       return;
     }
 
+    const customer = {
+      name: String(formData.get("name") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      address: String(formData.get("address") || "").trim()
+    };
+    const missingCustomerField = [
+      ["name", "#delivery-name"],
+      ["phone", "#delivery-phone"],
+      ["address", "#delivery-address"]
+    ].find(([field]) => !customer[field]);
+    if (missingCustomerField) {
+      document.querySelector(missingCustomerField[1]).focus();
+      showToast("Vui lòng nhập đầy đủ thông tin giao hàng.");
+      return;
+    }
+
     const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const order = {
       id: `TZ-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
       createdAt: new Date(),
-      email: getSignedInUser().email,
+      email: user.email,
+      customer,
       items,
       subtotal
     };
+    checkoutForm.reset();
+    checkoutDialog.close();
     cart.clear();
     savePersistentState();
     renderCart();
@@ -854,6 +943,7 @@ function setupScrollReveal() {
   });
 }
 
+initializeTheme();
 loadUserReviews();
 renderInitialGrids();
 renderCart();
